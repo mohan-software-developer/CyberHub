@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content 1</title>
+    <link rel="stylesheet" href="./carrierguide/carrier.css">
+</head>
+
+<body>
+    <div class="content1-container">
+
+        <h1>Beginner level timeline cards</h1>
+        <ul>
+            <li style="--accent-color:#41516C">
+                <div class="date">2002</div>
+                <div class="title">Title 1</div>
+                <div class="descr">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas itaque hic quibusdam
+                    fugiat est
+                    numquam harum, accusamus suscipit consequatur laboriosam!</div>
+            </li>
+            <li style="--accent-color:#FBCA3E">
+                <div class="date">2007</div>
+                <div class="title">Title 2</div>
+                <div class="descr">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos adipisci nobis nostrum
+                    vero
+                    nihil veniam.</div>
+            </li>
+            <li style="--accent-color:#E24A68">
+                <div class="date">2012</div>
+                <div class="title">Title 3</div>
+                <div class="descr">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga minima consequuntur
+                    soluta
+                    placeat iure totam commodi repellendus ea delectus, libero fugit quod reprehenderit, sequi quo, et
+                    dolorum saepe
+                    nulla hic.</div>
+            </li>
+            <li style="--accent-color:#1B5F8C">
+                <div class="date">2017</div>
+                <div class="title">Title 4</div>
+                <div class="descr">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit, cumque.</div>
+            </li>
+            <li style="--accent-color:#4CADAD">
+                <div class="date">2022</div>
+                <div class="title">Title 5</div>
+                <div class="descr">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit, non.</div>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const targetEl = document.querySelector('.target');
+
+        const loadSnippet = number => {
+            console.log('Fetching content for timeline' + number);
+            fetch(`http://127.0.0.1:5500/timeline/timelinepages/timeline${number}.html`)
+                .then(res => {
+                    if (res.ok) {
+                        return res.text();
+                    } else {
+                        console.log('Fetch failed:', res.status, res.statusText);
+                    }
+                })
+                .then(htmlSnippet => {
+                    console.log('Fetched HTML snippet:', htmlSnippet);
+                    targetEl.innerHTML = htmlSnippet;
+                })
+                .catch(error => {
+                    console.error('Error fetching content:', error);
+                });
+        };
+
+    </script>
+</body>
+
+</html>

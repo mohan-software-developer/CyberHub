@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        body {
+            background: linear-gradient(180deg, #fff, #e8faff);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>hi</h1>
+    <div class="container-fluid col-10">
+        <h5 class="text-center">Experience ulitmate carrier guidance with <h2 class="text-center">CyberHub</h2>
+        </h5>
+        <div class="text-center mt-4">
+            <button id="loadContentButton1" class="btn btn-outline-success mx-lg-3">Basic</button>
+            <button id="loadContentButton2" class="btn btn-outline-warning mx-lg-3">Intermediate</button>
+            <button id="loadContentButton3" class="btn btn-outline-danger mx-lg-3">Advance</button>
+        </div>
+
+        <!-- Close button to hide the loaded content -->
+
+        <button class="btn btn-info btn-close-white" id="closeContentButton" style="display: none;">Close</button>
+
+
+
+        <!-- Container for loaded content -->
+        <div id="loadedContent" style="display: none;"></div>
+
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+    <script>
+        const loadContentButton1 = document.getElementById("loadContentButton1");
+        const loadContentButton2 = document.getElementById("loadContentButton2");
+        const loadContentButton3 = document.getElementById("loadContentButton3");
+        const closeContentButton = document.getElementById("closeContentButton");
+        const loadedContent = document.getElementById("loadedContent");
+
+        const loadContent = (url) => {
+            // Fetch the dynamic content HTML file
+            fetch(url)
+                .then(response => response.text())
+                .then(content => {
+                    // Insert the fetched content into the loadedContent div
+                    loadedContent.innerHTML = content;
+                    // Show the loaded content and close button, hide the load buttons
+                    loadedContent.style.display = "block";
+                    closeContentButton.style.display = "block";
+                    loadContentButton1.style.display = "none";
+                    loadContentButton2.style.display = "none";
+                    loadContentButton3.style.display = "none";
+                })
+                .catch(error => {
+                    console.error("Error fetching dynamic content:", error);
+                });
+        };
+
+        loadContentButton1.addEventListener("click", () => {
+            loadContent("content1.html"); // Replace with the actual URL
+        });
+
+        loadContentButton2.addEventListener("click", () => {
+            loadContent("content2.html"); // Replace with the actual URL
+        });
+
+        loadContentButton3.addEventListener("click", () => {
+            loadContent("content3.html"); // Replace with the actual URL
+        });
+
+        closeContentButton.addEventListener("click", () => {
+            // Hide the loaded content and close button, show the load buttons
+            loadedContent.style.display = "none";
+            closeContentButton.style.display = "none";
+            loadContentButton1.style.display = "block";
+            loadContentButton2.style.display = "block";
+            loadContentButton3.style.display = "block";
+            // Clear the loaded content
+            loadedContent.innerHTML = "";
+        });
+    </script>
+
+</body>
+
+</html>

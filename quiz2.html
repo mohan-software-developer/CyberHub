@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz</title>
+</head>
+<style>
+    p {
+        font-size: medium;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .quiz-container {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 600px;
+        width: 100%;
+    }
+
+    .btn-container {
+        margin-top: 10px;
+    }
+
+    .btn {
+        font-size: large;
+        display: block;
+        width: 100%;
+        padding: 20px;
+        margin-top: 5px;
+        background-color: rgb(194, 227, 255);
+        color: #000;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: #3e3e3e;
+        color: #ffffff;
+    }
+
+    .score-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .nx-btn {
+        background-color: rgb(226, 226, 226);
+        font-size: 20px;
+        float: right;
+        padding: 6px;
+        border: 1px solid #3e3e3e;
+        border-radius: 5px;
+        
+    }
+
+    .ques {
+        font-size: larger;
+    }
+
+    .nx-btn:hover {
+        border: #fff;
+        background-color: #0091ff;
+        color: #fff;
+    }
+
+    .correct-answer {
+        background-color: #4caf50;
+        color: white;
+    }
+
+    .incorrect-answer {
+        background-color: #f44336;
+        color: white;
+    }
+</style>
+
+<body>
+    <div class="quiz-container">
+        <h1>Online Quiz</h1>
+        <div id="question-container" class="question-container">
+            <p id="question" class="ques">Question text goes here.</p>
+            <div id="answer-buttons" class="btn-container">
+                <!-- Answer buttons will be added dynamically using JavaScript -->
+                -
+            </div>
+        </div>
+        <div id="score-container" class="score-container">
+            <p>Your Score: <span id="score">0</span></p>
+            <div id="next-btn"></div>
+        </div>
+    </div>
+    <script>
+        const questionContainer = document.getElementById('question-container');
+        const questionElement = document.getElementById('question');
+        const answerButtons = document.getElementById('answer-buttons');
+        const scoreElement = document.getElementById('score');
+        const scorecontainer = document.getElementById('score-container');
+        const nextbutton = document.getElementById('next-btn');
+        const questions = [{
+    question: '1) What is the purpose of an IP address in computer networking?',
+    answers: [{
+        text: 'To identify the manufacturer of a network device.',
+        correct: 2
+    }, {
+        text: 'To determine the physical location of a computer.',
+        correct: 4
+    }, {
+        text: 'To encrypt data transmitted over the network.',
+        correct: 3
+    }, {
+        text: 'To uniquely identify a device on a network.',
+        correct: 1
+    }]
+}, {
+    question: '2) What is the primary function of a router in a computer network?',
+    answers: [{
+        text: 'Providing electrical power to connected devices.',
+        correct: 2
+    }, {
+        text: 'Storing and managing files on the network.',
+        correct: 3
+    }, {
+        text: 'Forwarding data between different networks.',
+        correct: 1
+    }, {
+        text: 'Displaying websites and content to users.',
+        correct: 4
+    }]
+}, {
+    question: '3) In IP subnetting, what does a subnet mask determine?',
+    answers: [{
+        text: ' The maximum number of devices allowed on a network.',
+        correct: 2
+    }, {
+        text: 'The range of IP addresses that belong to a subnet.',
+        correct: 1
+    }, {
+        text: 'The physical location of a device on a network.',
+        correct: 4
+    }, {
+        text: 'The size of the IP address assigned to a device.',
+        correct: 3
+    }]
+}, {
+    question: '4) Imagine the internet is like a big neighborhood, and data packets are like letters. Which "postal service" protocol is responsible for sending out these data packets to the right houses (devices) in the neighborhood?',
+    answers: [{
+        text: 'IP',
+        correct: 1
+    }, {
+        text: 'HTTP',
+        correct: 2
+    }, {
+        text: 'TCP',
+        correct: 3
+    }, {
+        text: 'FTP',
+        correct: 4
+    }]
+}, {
+    question: '5)In the context of computer security, what is the main purpose of a firewall?',
+    answers: [{
+        text: 'To protect a computer from overheating.',
+        correct: 2
+    }, {
+        text: 'To prevent unauthorized access and control of a network.',
+        correct: 1
+    }, {
+        text: 'To enhance the performance of network devices.',
+        correct: 3
+    }, {
+        text: 'To provide wireless connectivity to devices.',
+        correct: 4
+    }]
+}, {
+    question: '6) In computer networking, what are ports primarily used for?',
+    answers: [{
+        text: 'Attaching physical cables to network devices.',
+        correct: 2
+    }, {
+        text: 'Identifying different computers on the internet.',
+        correct: 4
+    }, {
+        text: 'Securing a network from unauthorized access.',
+        correct: 3
+    }, {
+        text: 'Directing network traffic to specific applications or services.',
+        correct: 1
+    }]
+}, {
+    question: '7) In a large office, the IT department wants to separate the sales teams network traffic from the marketing team s traffic to improve security. Which networking concept would help achieve this goal?',
+    answers: [{
+        text: 'Port forwarding',
+        correct: 2
+    }, {
+        text: 'DNS resolution',
+        correct: 3
+    }, {
+        text: 'VLANs (Virtual LANs)',
+        correct: 1
+    }, {
+        text: 'Subnetting',
+        correct: 4
+    }]
+}, {
+    question: '8) What do network topologies show in the context of computer networks?',
+    answers: [{
+        text: 'The physical location of network devices.',
+        correct: 2
+    }, {
+        text: 'The number of users connected to the network.',
+        correct: 4
+    }, {
+        text: 'The speed of data transmission on the network.',
+        correct: 3
+    }, {
+        text: 'How computers are connected and communicate.',
+        correct: 1
+    }]
+}, {
+    question: '9) In the digital world, what is the primary purpose of network security measures?',
+    answers: [{
+        text: 'To protect against unauthorized access and threats.',
+        correct: 1
+    }, {
+        text: 'To make computers invisible to other devices.',
+        correct: 2
+    }, {
+        text: 'To increase the speed of data transmission.',
+        correct: 3
+    }, {
+        text: 'To change the colors of network interfaces.',
+        correct: 4
+    }]
+}, {
+    question: '10) How do wireless networks allow devices to communicate in the digital world?',
+    answers: [{
+        text: 'Through physical cables.',
+        correct: 2
+    }, {
+        text: 'Without the need for wires.',
+        correct: 3
+    }, {
+        text: 'By changing the colors of devices.',
+        correct: 1
+    }, {
+        text: 'By using secret codes.',
+        correct: 4
+    }]
+}, {
+    question: '11) In the context of computer networks, what does network monitoring involve?',
+    answers: [{
+        text: 'Changing network passwords regularly.',
+        correct: 2
+    }, {
+        text: 'Keeping track of network traffic and activities.',
+        correct: 1
+    }, {
+        text: 'Turning off devices during non-peak hours.',
+        correct: 3
+    }, {
+        text: 'Rearranging network cables for better performance.',
+        correct: 4
+    }]
+}, {
+    question: '12) What is the main goal of network troubleshooting in computer networks?',
+    answers: [{
+        text: 'Creating new network protocols.',
+        correct: 2
+    }, {
+        text: 'Changing network hardware components.',
+        correct: 4
+    }, {
+        text: 'Increasing the speed of data transmission.',
+        correct: 3
+    }, {
+        text: 'Diagnosing and fixing network issues.',
+        correct: 1
+    }]
+}, {
+    question: '13) In the context of computer networks, what does network architecture refer to?',
+    answers: [{
+        text: 'The physical layout of buildings in a company.',
+        correct: 2
+    }, {
+        text: 'The design and organization of network components.',
+        correct: 1
+    }, {
+        text: 'The arrangement of computers on a single desk.',
+        correct: 3
+    }, {
+        text: 'The process of creating logos and visual branding.',
+        correct: 4
+    }]
+}, {
+    question: '14) What does the term "cyber threat landscape" generally refer to?',
+    answers: [{
+        text: 'The overall picture of online security risks and dangers.',
+        correct: 1
+    }, {
+        text: 'Different types of digital artwork',
+        correct: 2
+    }, {
+        text: 'A map of the physical internet infrastructure.',
+        correct: 3
+    }, {
+        text: 'Locations of famous landmarks in the digital world.',
+        correct: 4
+    }]
+}, {
+    question: '15) In the context of Linux, what do commands like "ls," "cd," and "mkdir" help you do?',
+    answers: [{
+        text: 'Browse the internet.',
+        correct: 2
+    }, {
+        text: 'Play music and videos.',
+        correct: 3
+    }, {
+        text: 'Manage files and directories.',
+        correct: 1
+    }, {
+        text: 'Change the color of the terminal.',
+        correct: 4
+    }]
+},
+// Add more questions here
+];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let ans;
+
+        function showQuestion(question) {
+            questionElement.innerText = question.question;
+            answerButtons.innerHTML = '';
+            question.answers.forEach(answer => {
+                const button = document.createElement('button');
+                button.innerText = answer.text;
+                button.classList.add('btn');
+                button.addEventListener('click', () => selectAnswer(answer, questions[currentQuestionIndex]));
+                answerButtons.appendChild(button);
+            });
+        }
+
+        function showAnswer(question, ans) {
+            questionElement.innerText = question.question;
+            answerButtons.innerHTML = '';
+            question.answers.forEach(answer => {
+                const button = document.createElement('button');
+                button.innerText = answer.text;
+                button.classList.add('btn');
+                if (ans.correct == answer.correct && answer.correct == 1) {
+                    button.classList.add('correct-answer');
+                } else if (ans.correct == answer.correct && ans.correct != 1) {
+                    button.classList.add('incorrect-answer');
+                } else if (answer.correct == 1) {
+                    button.classList.add('correct-answer');
+                }
+                answerButtons.appendChild(button);
+            });
+            nextbutton.innerHTML = '';
+            const button = document.createElement('button');
+            button.innerText = 'next';
+            button.classList.add('nx-btn');
+            button.addEventListener('click', () => myFunction(1));
+            nextbutton.appendChild(button);
+        }
+
+        function selectAnswer(answer, question) {
+            if (answer.correct == 1) {
+                score++;
+                scoreElement.innerText = score;
+            }
+            showAnswer(questions[currentQuestionIndex], answer);
+        }
+
+        function myFunction(x) {
+            nextbutton.innerHTML = '';
+            currentQuestionIndex = currentQuestionIndex + x;
+            if (currentQuestionIndex < questions.length) {
+                showQuestion(questions[currentQuestionIndex]);
+            } else {
+                scorecontainer.innerHTML = '';
+
+                if (score > 7) {
+                    questionContainer.innerHTML = `<h1>Quiz Completed!</h1><p style="background-color:#68cf8f; padding:6px; width:25%; border:1px solid #fff; border-radius:5px;">Your Final Score: ${score}</p><p style="color:#68cf8f;">Pass</p>`;
+
+
+                } else {
+                    questionContainer.innerHTML = `<h1>Quiz Completed!</h1><p style="background-color:#ff0000; padding:6px; width:25%; border:1px solid #fff; border-radius:5px;">Your Final Score: ${score}</p><p style="color:#ff0000;">Fail</p>`;
+
+                }
+            }
+        }
+
+        showQuestion(questions[currentQuestionIndex]);
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

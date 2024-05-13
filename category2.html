@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Document</title>
+
+    <style>
+        /* Game card start*/
+
+        .game-card {
+            background: url("https://img.freepik.com/free-vector/space-background-with-planet-landscape_107791-6146.jpg");
+            background-repeat: no-repeat;
+            /* background-attachment: fixed; */
+            background-size: cover;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border-radius: var(--radius-12);
+        }
+
+        .game-card .card-icon {
+
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-color: var(--white);
+            border: 1px solid #fff;
+            border-radius: 100%;
+            margin-bottom: 15px;
+            aspect-ratio: 1 / 1;
+            max-width: 165px;
+            display: grid;
+            place-content: center;
+            margin-inline: auto;
+            transition: var(--transition-1);
+        }
+
+        .game-card:hover {
+
+            box-shadow: 0px 0px 20px var(--black_70);
+
+        }
+
+        .game-card:hover .card-icon {
+            background-color: var(--white);
+        }
+
+        .game-card .card-icon ion-icon {
+            font-size: 5rem;
+            color: var(--winter-sky);
+            --ionicon-stroke-width: 20px;
+            transition: var(--transition-1);
+        }
+
+        .game-card:hover .card-icon ion-icon {
+            color: var(--royal-blue-dark);
+        }
+
+        .game-card .title {
+            text-align: center;
+            margin-block-end: 15px;
+            color: var(--white);
+        }
+
+        .game-card .text {
+            text-align: center;
+            margin-block-end: 20px;
+            color: var(--white);
+        }
+
+        .game-card .card-btn {
+            background: var(--gradient-3);
+            margin-inline: auto;
+            padding: 15px;
+            border: 1px solid var(--winter-sky);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition-1);
+        }
+
+        .game-card .card-btn:is(:hover, :focus) {
+            color: var(--black_70);
+            background-color: var(--white);
+            box-shadow: 1px 1px 40px var(--white);
+        }
+
+
+        /*Game card End*/
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid col-10">
+        <div>
+            <div class="row">
+                <section id="paidcourses">
+                    <div class="row">
+                        <h2 class="text-center mt-5 mb-4">Essential for Cyber Hackers</h2>
+
+                        <div id="cardtrans" class="col-md-3 my-2">
+                            <div class="card shadow"
+                                style=" background-repeat: no-repeat; background-size: cover; background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDyGbx46rO9TaaFb-Jrzlj9_te3VekFKvIeZfyZ1UtkbkhnwAhIdHrDyRyfLKjz7KUDhc&usqp=CAU);">
+                                <div class="inner">
+                                    <img class="card-img-top p-3 px-5"
+                                        src="https://static.thenounproject.com/png/3262491-200.png" alt="free courses">
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">CCNA</h4>
+                                    <p class="card-text">Introduction to networks</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="cardtrans" class="col-md-3 my-2">
+                            <div class="card shadow"
+                                style=" background-repeat: no-repeat; background-size: cover; background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDyGbx46rO9TaaFb-Jrzlj9_te3VekFKvIeZfyZ1UtkbkhnwAhIdHrDyRyfLKjz7KUDhc&usqp=CAU);">
+                                <div class="inner">
+                                    <img class="card-img-top p-3 px-5"
+                                        src="https://static.thenounproject.com/png/3262491-200.png" alt="free courses">
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">CCNA</h4>
+                                    <p class="card-text">Introduction to networks</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="cardtrans" class="col-md-3 my-2">
+                            <div class="card shadow"
+                                style=" background-repeat: no-repeat; background-size: cover; background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDyGbx46rO9TaaFb-Jrzlj9_te3VekFKvIeZfyZ1UtkbkhnwAhIdHrDyRyfLKjz7KUDhc&usqp=CAU);">
+                                <div class="inner">
+                                    <img class="card-img-top p-3 px-5"
+                                        src="https://static.thenounproject.com/png/3262491-200.png" alt="free courses">
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">CCNA</h4>
+                                    <p class="card-text">Introduction to networks</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="cardtrans" class="col-md-3 my-2">
+                            <div class="card shadow"
+                                style=" background-repeat: no-repeat; background-size: cover; background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDyGbx46rO9TaaFb-Jrzlj9_te3VekFKvIeZfyZ1UtkbkhnwAhIdHrDyRyfLKjz7KUDhc&usqp=CAU);">
+                                <div class="inner">
+                                    <img class="card-img-top p-3 px-5"
+                                        src="https://static.thenounproject.com/png/3262491-200.png" alt="free courses">
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">CCNA</h4>
+                                    <p class="card-text">Introduction to networks</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="row">
+                <section id="paidcourses">
+                    <div class="row">
+                        <h2 class="text-center mt-5 mb-4">Essential for Cyber Hackers</h2>
+
+                        <div id="cardtrans" class="col-md-3 my-2">
+                            <div class="card shadow"
+                                style=" background-repeat: no-repeat; background-size: cover; background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDyGbx46rO9TaaFb-Jrzlj9_te3VekFKvIeZfyZ1UtkbkhnwAhIdHrDyRyfLKjz7KUDhc&usqp=CAU);">
+                                <div class="inner">
+                                    <img class="card-img-top p-3 px-5"
+                                        src="https://static.thenounproject.com/png/3262491-200.png" alt="free courses">
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">CCNA</h4>
+                                    <p class="card-text">Introduction to networks</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="cardtrans" class="col-md-3 my-2">
+                            <div class="card shadow"
+                                style=" background-repeat: no-repeat; background-size: cover; background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDyGbx46rO9TaaFb-Jrzlj9_te3VekFKvIeZfyZ1UtkbkhnwAhIdHrDyRyfLKjz7KUDhc&usqp=CAU);">
+                                <div class="inner">
+                                    <img class="card-img-top p-3 px-5"
+                                        src="https://static.thenounproject.com/png/3262491-200.png" alt="free courses">
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">CCNA</h4>
+                                    <p class="card-text">Introduction to networks</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="cardtrans" class="col-md-3 my-2">
+                            <div class="card shadow"
+                                style=" background-repeat: no-repeat; background-size: cover; background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDyGbx46rO9TaaFb-Jrzlj9_te3VekFKvIeZfyZ1UtkbkhnwAhIdHrDyRyfLKjz7KUDhc&usqp=CAU);">
+                                <div class="inner">
+                                    <img class="card-img-top p-3 px-5"
+                                        src="https://static.thenounproject.com/png/3262491-200.png" alt="free courses">
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">CCNA</h4>
+                                    <p class="card-text">Introduction to networks</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="cardtrans" class="col-md-3 my-2">
+                            <div class="card shadow"
+                                style=" background-repeat: no-repeat; background-size: cover; background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDyGbx46rO9TaaFb-Jrzlj9_te3VekFKvIeZfyZ1UtkbkhnwAhIdHrDyRyfLKjz7KUDhc&usqp=CAU);">
+                                <div class="inner">
+                                    <img class="card-img-top p-3 px-5"
+                                        src="https://static.thenounproject.com/png/3262491-200.png" alt="free courses">
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">CCNA</h4>
+                                    <p class="card-text">Introduction to networks</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="row">
+                <section id="paidcourses">
+                    <div class="row">
+                        <h2 class="text-center mt-5 mb-4">Essential for Cyber Hackers</h2>
+
+                        <div id="cardtrans" class="col-md-3 my-2">
+                            <div class="card shadow"
+                                style=" background-repeat: no-repeat; background-size: cover; background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDyGbx46rO9TaaFb-Jrzlj9_te3VekFKvIeZfyZ1UtkbkhnwAhIdHrDyRyfLKjz7KUDhc&usqp=CAU);">
+                                <div class="inner">
+                                    <img class="card-img-top p-3 px-5"
+                                        src="https://static.thenounproject.com/png/3262491-200.png" alt="free courses">
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">CCNA</h4>
+                                    <p class="card-text">Introduction to networks</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="cardtrans" class="col-md-3 my-2">
+                            <div class="card shadow"
+                                style=" background-repeat: no-repeat; background-size: cover; background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDyGbx46rO9TaaFb-Jrzlj9_te3VekFKvIeZfyZ1UtkbkhnwAhIdHrDyRyfLKjz7KUDhc&usqp=CAU);">
+                                <div class="inner">
+                                    <img class="card-img-top p-3 px-5"
+                                        src="https://static.thenounproject.com/png/3262491-200.png" alt="free courses">
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">CCNA</h4>
+                                    <p class="card-text">Introduction to networks</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="cardtrans" class="col-md-3 my-2">
+                            <div class="card shadow"
+                                style=" background-repeat: no-repeat; background-size: cover; background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDyGbx46rO9TaaFb-Jrzlj9_te3VekFKvIeZfyZ1UtkbkhnwAhIdHrDyRyfLKjz7KUDhc&usqp=CAU);">
+                                <div class="inner">
+                                    <img class="card-img-top p-3 px-5"
+                                        src="https://static.thenounproject.com/png/3262491-200.png" alt="free courses">
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">CCNA</h4>
+                                    <p class="card-text">Introduction to networks</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="cardtrans" class="col-md-3 my-2">
+                            <div class="card shadow"
+                                style=" background-repeat: no-repeat; background-size: cover; background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDyGbx46rO9TaaFb-Jrzlj9_te3VekFKvIeZfyZ1UtkbkhnwAhIdHrDyRyfLKjz7KUDhc&usqp=CAU);">
+                                <div class="inner">
+                                    <img class="card-img-top p-3 px-5"
+                                        src="https://static.thenounproject.com/png/3262491-200.png" alt="free courses">
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">CCNA</h4>
+                                    <p class="card-text">Introduction to networks</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+       
+
+            <h3 class="heading">
+                Educational Games
+            </h3>
+            <div class="game-card m-5">
+                <div class="card-icon">
+                    <!-- <ion-icon name="telescope-outline"></ion-icon> -->
+                    <img class="img-cover" src="./assets/imgs/cybermanicon.png" alt="">
+                </div>
+                <h3 class="h3 title">Play Instant CyberGames</h3>
+                <p class="text">
+                    Play fun filled Cyber games get cybersecurity awarness by interactive hands-on gamefication zone...
+                </p>
+                <button class="card-btn" aria-label="Show More" onclick="window.location.href='game.html'">
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+
+                </button>
+            </div>
+        
+        <div class="bg-dark ">
+            <p class="text-light text-center">copyrights @CyberHub 2023</p>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

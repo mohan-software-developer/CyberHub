@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz</title>
+</head>
+<style>
+    p {
+        font-size: medium;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .quiz-container {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 600px;
+        width: 100%;
+    }
+
+    .btn-container {
+        margin-top: 10px;
+    }
+
+    .btn {
+        font-size: large;
+        display: block;
+        width: 100%;
+        padding: 20px;
+        margin-top: 5px;
+        background-color: rgb(194, 227, 255);
+        color: #000;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: #3e3e3e;
+        color: #ffffff;
+    }
+
+    .score-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .nx-btn {
+        background-color: rgb(226, 226, 226);
+        font-size: 20px;
+        float: right;
+        padding: 6px;
+        border: 1px solid #3e3e3e;
+        border-radius: 5px;
+        
+    }
+
+    .ques {
+        font-size: larger;
+    }
+
+    .nx-btn:hover {
+        border: #fff;
+        background-color: #0091ff;
+        color: #fff;
+    }
+
+    .correct-answer {
+        background-color: #4caf50;
+        color: white;
+    }
+
+    .incorrect-answer {
+        background-color: #f44336;
+        color: white;
+    }
+</style>
+
+<body>
+    <div class="quiz-container">
+        <h1>Online Quiz</h1>
+        <div id="question-container" class="question-container">
+            <p id="question" class="ques">Question text goes here.</p>
+            <div id="answer-buttons" class="btn-container">
+                <!-- Answer buttons will be added dynamically using JavaScript -->
+                -
+            </div>
+        </div>
+        <div id="score-container" class="score-container">
+            <p>Your Score: <span id="score">0</span></p>
+            <div id="next-btn"></div>
+        </div>
+    </div>
+    <script>
+        const questionContainer = document.getElementById('question-container');
+        const questionElement = document.getElementById('question');
+        const answerButtons = document.getElementById('answer-buttons');
+        const scoreElement = document.getElementById('score');
+        const scorecontainer = document.getElementById('score-container');
+        const nextbutton = document.getElementById('next-btn');
+
+        const questions = [{
+            question: 'Pink Ladies and Granny Smiths are types of what fruit?',
+            answers: [{
+                text: 'Mangos',
+                correct: 2
+            }, {
+                text: 'Apples',
+                correct: 1
+            }, {
+                text: 'Jackfruits',
+                correct: 3
+            }, {
+                text: 'Oranges',
+                correct: 4
+            }]
+        }, {
+            question: 'What phone company produced the 3310?',
+            answers: [{
+                text: 'Lenovo',
+                correct: 2
+            }, {
+                text: 'Samsung',
+                correct: 3
+            }, {
+                text: 'Nokia',
+                correct: 1
+            }, {
+                text: 'Karbonn',
+                correct: 4
+            }]
+        }, {
+            question: 'What planet is closest to the sun?',
+            answers: [{
+                text: 'Earth',
+                correct: 2
+            }, {
+                text: 'Mars',
+                correct: 3
+            }, {
+                text: 'Jupiter',
+                correct: 4
+            }, {
+                text: 'Mercury',
+                correct: 1
+            }]
+        }, {
+            question: 'How many dots appear on a pair of dice?',
+            answers: [{
+                text: '42',
+                correct: 1
+            }, {
+                text: '36',
+                correct: 2
+            }, {
+                text: '54',
+                correct: 3
+            }, {
+                text: '48',
+                correct: 4
+            }]
+        }, {
+            question: 'What is 2 + 2?',
+            answers: [{
+                text: '3',
+                correct: 2
+            }, {
+                text: '4',
+                correct: 1
+            }, {
+                text: '5',
+                correct: 3
+            }, {
+                text: '6',
+                correct: 4
+            }]
+        },
+            // Add more questions here
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let ans;
+
+        function showQuestion(question) {
+            questionElement.innerText = question.question;
+            answerButtons.innerHTML = '';
+            question.answers.forEach(answer => {
+                const button = document.createElement('button');
+                button.innerText = answer.text;
+                button.classList.add('btn');
+                button.addEventListener('click', () => selectAnswer(answer, questions[currentQuestionIndex]));
+                answerButtons.appendChild(button);
+            });
+        }
+
+        function showAnswer(question, ans) {
+            questionElement.innerText = question.question;
+            answerButtons.innerHTML = '';
+            question.answers.forEach(answer => {
+                const button = document.createElement('button');
+                button.innerText = answer.text;
+                button.classList.add('btn');
+                if (ans.correct == answer.correct && answer.correct == 1) {
+                    button.classList.add('correct-answer');
+                } else if (ans.correct == answer.correct && ans.correct != 1) {
+                    button.classList.add('incorrect-answer');
+                } else if (answer.correct == 1) {
+                    button.classList.add('correct-answer');
+                }
+                answerButtons.appendChild(button);
+            });
+            nextbutton.innerHTML = '';
+            const button = document.createElement('button');
+            button.innerText = 'next';
+            button.classList.add('nx-btn');
+            button.addEventListener('click', () => myFunction(1));
+            nextbutton.appendChild(button);
+        }
+
+        function selectAnswer(answer, question) {
+            if (answer.correct == 1) {
+                score++;
+                scoreElement.innerText = score;
+            }
+            showAnswer(questions[currentQuestionIndex], answer);
+        }
+
+        function myFunction(x) {
+            nextbutton.innerHTML = '';
+            currentQuestionIndex = currentQuestionIndex + x;
+            if (currentQuestionIndex < questions.length) {
+                showQuestion(questions[currentQuestionIndex]);
+            } else {
+                scorecontainer.innerHTML = '';
+
+                if (score > 3) {
+                    questionContainer.innerHTML = `<h1>Quiz Completed!</h1><p style="background-color:#68cf8f; padding:6px; width:25%; border:1px solid #fff; border-radius:5px;">Your Final Score: ${score}</p><p style="color:#68cf8f;">Pass</p>`;
+
+
+                } else {
+                    questionContainer.innerHTML = `<h1>Quiz Completed!</h1><p style="background-color:#ff0000; padding:6px; width:25%; border:1px solid #fff; border-radius:5px;">Your Final Score: ${score}</p><p style="color:#ff0000;">Fail</p>`;
+
+                }
+            }
+        }
+
+        showQuestion(questions[currentQuestionIndex]);
+    </script>
+</body>
+
+</html>
